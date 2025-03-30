@@ -15,23 +15,21 @@ def is_prime(number: int) -> bool:
 
     return True
 
-def is_prime_recursive(prime: int, test_number = 2) -> bool:
+def is_prime_recursive(prime: int, divisor = 2) -> bool:
 
-    if prime%test_number == 0:
+    if prime < 2:
         return False
     
-    if test_number == prime:
+    if divisor == prime:
+        return True
+    
+    if prime%divisor == 0:
         return False
     
-    test_number+=1
-    is_prime_recursive(prime, test_number)
-
-
-
-
-
+    return is_prime_recursive(prime, divisor+1)
 
 
 if __name__ == "__main__":
 
     print(is_prime(10))
+    print(is_prime_recursive(15))
