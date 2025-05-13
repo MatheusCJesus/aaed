@@ -1,3 +1,5 @@
+use std::process::Output;
+
 
 
 fn max_elem(arr: & [usize]) -> usize {
@@ -14,13 +16,15 @@ fn max_elem(arr: & [usize]) -> usize {
     
 }
 
-fn create_count_arr(arr: &[usize], size: usize) -> Vec<i32> {
+fn create_count_arr(arr: &[usize], size: usize, base: usize, div: usize) -> Vec<i32> {
     
     let mut count_arr = vec![0; size];
 
     for i in 0..size {
+
+        let pos = (arr[i] / div) % base;
         
-        count_arr[arr[i]] += 1;
+        count_arr[pos] += 1;
 
     }
 
@@ -28,15 +32,32 @@ fn create_count_arr(arr: &[usize], size: usize) -> Vec<i32> {
 
 }
 
-fn calc_prefix_sum()
+fn calc_prefix_sum(arr: & [usize], size: usize) -> Vec<usize> {
+    let mut prefix_sum = vec![0; size];
+    prefix_sum[0] = arr[0];
+    for i in 1..size {
+        prefix_sum[i] = prefix_sum[i - 1] + arr[i];
+    }
 
-fn counting_sort(arr: &mut [usize], size: usize, base: u32) {
+    return prefix_sum;
+}
+
+fn counting_sort(arr: &mut [usize], size: usize, base: usize, div: usize) {
 
     let max_value = max_elem(arr);
     let mut temp_arr = vec![0, size];
     
     let count_arr: Vec<i32> = create_count_arr(arr, size);
 
+    let prefix_sum_arr = calc_prefix_sum(arr, size);
+
+    let output_arr: Vec<usize> = vec![0; size];
+
+    for i in 0..size {
+        let pos = (arr[i] / div) % base;
+
+        a
+    }
 
 }
 
